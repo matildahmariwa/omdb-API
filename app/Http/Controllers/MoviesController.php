@@ -18,11 +18,16 @@ class MoviesController extends Controller
     public function index()
     {
         $client = new Client();
-        $uri = 'http://www.omdbapi.com/?s=girl&apiKey=51dea3aa';
+        $uri = 'http://www.omdbapi.com/?&s=woman&apiKey=51dea3aa&page=1';
         $header = ['headers' => ['X-Auth-Token' => 'My-Token']];
         $res = $client->get($uri, $header);
         $data = json_decode($res->getBody()->getContents(), true);
   return $data;
+    }
+
+    public function fetchMovies(){
+        $movies = Movie::orderBy('created_at', 'desc')->get();
+        return response()->json($movies);
     }
 
     /**
