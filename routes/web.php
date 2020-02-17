@@ -18,3 +18,5 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/show', 'MoviesController@index');
+Route::get('/savee', 'MoviesController@store')->name('savee');
