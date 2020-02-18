@@ -7,9 +7,18 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+
 import ElementUI from 'element-ui';
+
 import 'element-ui/lib/theme-chalk/index.css';
+
 Vue.use(ElementUI);
+
+import VueAxios from 'vue-axios';
+
+import axios from 'axios';
+
+Vue.use(VueAxios, axios);
 
 /**
  * The following block of code may be used to automatically register your

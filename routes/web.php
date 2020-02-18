@@ -19,7 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/savee', 'MoviesController@store')->name('savee');
-Route::get('/api/movies', 'MoviesController@fetchMovies');
+Route::get('/movies', 'MoviesController@fetchMovies');
 Route::get('/landing', function () {
     return view('landing');
 });
