@@ -1,29 +1,28 @@
 <template>
 <div>
-<el-row :gutter="10" >
-  <el-col :span="6" v-for="movie in movies" v-bind:key="movie">
- <el-card>
-      <img v-bind:src="movie.cover_photo" >
+<el-row :gutter="10">
+  <el-col :span="6" v-for="(movie, i) in movies" v-bind:key="i">
+ <el-card shadow="always" :body-style="{ padding: '0px'} ">
+      <img v-bind:src="movie.cover_photo" class="image" >
     <div style="padding: 14px;">
                  <div class="bottom clearfix">
-           <h4>{{ movie.title }}</h4>
+          <a :href="`/movie/${movie.id}`">{{movie.title}}</a>       
+          <!-- <router-link :to="{name:'movie',params:{id:movie.id}}">{{movie.title}}</router-link> 
+               <router-view></router-view> -->
                     <h4>{{ movie.year }}</h4>
                     <h4>{{ movie.type }}</h4>
+
         </div>
-                   
-                    
-           
+         <div class="block">
+ 
+  <el-rate  :max="10" ></el-rate>
+</div>          
             </div>
         </el-card>
   </el-col>
  
 </el-row>
-    <!-- <ul>
-        <li v-for="movie in movies" v-bind:key="movie">
-            {{movie.title}}
-             {{movie.year}}
-        </li>
-    </ul> -->
+   
 </div>
 </template>
 
@@ -33,10 +32,15 @@
         data() {
             return {
                 movies: [],
-
+              movie:'',
+          
             };
         },
-        created(){ this. fetchMovieList(); },
+        created(){ 
+          this. fetchMovieList(); 
+         
+          },
+        
         methods: {
             fetchMovieList() {
                     axios.get('/movies').then(response => {
@@ -45,37 +49,20 @@
 
                    .catch(error=>console.log(error))
 
-                }
-            }
+                },
+            
 
+}
     }
-
+   
 
 </script>
 
 <style scoped>
- .el-row {
-    margin-bottom: 20px;
-   
+ 
+.image {
+    width: 100%;
+    display: block;
   }
-  .el-col {
-    border-radius: 4px;
-  }
-  .bg-purple-dark {
-    background: #99a9bf;
-  }
-  .bg-purple {
-    background: #d3dce6;
-  }
-  .bg-purple-light {
-    background: #e5e9f2;
-  }
-  .grid-content {
-    border-radius: 4px;
-    min-height: 36px;
-  }
-  .row-bg {
-    padding: 10px 0;
-    background-color: #f9fafc;
-  }
+  
 </style>

@@ -23,3 +23,4 @@ Route::get('/movies', 'MoviesController@fetchMovies');
 Route::get('/landing', function () {
     return view('landing');
 });
+Route::get('/movie/{id}', 'MoviesController@show');

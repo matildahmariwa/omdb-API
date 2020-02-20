@@ -75,7 +75,13 @@ class MoviesController extends Controller
      */
     public function show($id)
     {
-        //
+    $movie=Movie::find($id);
+    // if($movie){
+    // return response()->json(['status'=>true,'movie'=>$movie]);
+    // }else{
+    // return response()->json(['status'=>false]);
+    // }
+    return view('details', ['movie' => $movie]);
     }
 
     /**
