@@ -27,6 +27,7 @@ class MoviesController extends Controller
 //getmovies
     public function fetchMovies(){
         $movies = Movie::with('rating')->orderBy('created_at', 'desc')->get();
+        
         return response()->json($movies);
     }
 

@@ -3651,6 +3651,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -100111,7 +100112,12 @@ var render = function() {
                       _vm._v(" "),
                       _c("h4", [_vm._v(_vm._s(movie.year))]),
                       _vm._v(" "),
-                      _c("h4", [_vm._v(_vm._s(movie.type))])
+                      _c("h4", [_vm._v(_vm._s(movie.type))]),
+                      _vm._v(
+                        "\n                    " +
+                          _vm._s(movie.average_rating) +
+                          "\n                   \n        "
+                      )
                     ]),
                     _vm._v(" "),
                     _c(
@@ -100120,7 +100126,7 @@ var render = function() {
                       [
                         _c("el-rate", {
                           attrs: {
-                            value: movie.rating ? movie.rating.star_value : 0,
+                            value: movie.rating ? movie.average_rating : 0,
                             max: 10,
                             disabled: ""
                           }

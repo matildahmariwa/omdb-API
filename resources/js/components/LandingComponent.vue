@@ -11,11 +11,12 @@
                <router-view></router-view> -->
                     <h4>{{ movie.year }}</h4>
                     <h4>{{ movie.type }}</h4>
+                    {{movie.average_rating}}
                    
         </div>
          <div class="block">
 
-   <el-rate :value='movie.rating? movie.rating.star_value:0' :max="10" disabled></el-rate>
+   <el-rate :value='movie.rating? movie.average_rating:0' :max="10" disabled></el-rate>
 </div>          
             </div>
         </el-card>
