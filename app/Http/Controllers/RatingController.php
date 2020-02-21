@@ -13,6 +13,10 @@ class RatingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth',[]);
+    }
     public function index()
     {
         //
@@ -41,7 +45,7 @@ class RatingController extends Controller
         $movie_id=$request->movie_id;
 
         $rating = Rating::updateOrCreate([
-            
+
             'user_id' => $user_id, 'movie_id' => $movie_id],
 
             ['star_value'=>$star_value]

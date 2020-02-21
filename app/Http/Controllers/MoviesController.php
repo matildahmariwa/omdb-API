@@ -15,6 +15,7 @@ class MoviesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
     public function index()
     {
         $client = new Client();

@@ -1,5 +1,6 @@
 <template>
 <div>
+  <el-input placeholder="Please input" v-model="input"></el-input>
 <el-row :gutter="10">
   <el-col :span="6" v-for="(movie, i) in movies" v-bind:key="i">
  <el-card shadow="always" :body-style="{ padding: '0px'} ">
@@ -11,7 +12,7 @@
                <router-view></router-view> -->
                     <h4>{{ movie.year }}</h4>
                     <h4>{{ movie.type }}</h4>
-                    {{movie.average_rating}}
+                   
                    
         </div>
          <div class="block">
@@ -34,6 +35,7 @@
             return {
                 movies: [],
               movie:'',
+               input: ''
           
             };
         },
@@ -53,6 +55,15 @@
                 },
             
 
+},
+computed: {
+  searchContents(){
+    if (this.search === '') {
+      return this.movies
+    }
+
+    return this.movies.filter(x => this.search === x.funding)
+  }
 }
     }
    

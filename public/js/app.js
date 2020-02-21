@@ -3652,12 +3652,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       movies: [],
-      movie: ''
+      movie: '',
+      input: ''
     };
   },
   created: function created() {
@@ -3671,6 +3673,19 @@ __webpack_require__.r(__webpack_exports__);
         _this.movies = response.data;
       })["catch"](function (error) {
         return console.log(error);
+      });
+    }
+  },
+  computed: {
+    searchContents: function searchContents() {
+      var _this2 = this;
+
+      if (this.search === '') {
+        return this.movies;
+      }
+
+      return this.movies.filter(function (x) {
+        return _this2.search === x.funding;
       });
     }
   }
@@ -100085,6 +100100,17 @@ var render = function() {
   return _c(
     "div",
     [
+      _c("el-input", {
+        attrs: { placeholder: "Please input" },
+        model: {
+          value: _vm.input,
+          callback: function($$v) {
+            _vm.input = $$v
+          },
+          expression: "input"
+        }
+      }),
+      _vm._v(" "),
       _c(
         "el-row",
         { attrs: { gutter: 10 } },
@@ -100112,12 +100138,7 @@ var render = function() {
                       _vm._v(" "),
                       _c("h4", [_vm._v(_vm._s(movie.year))]),
                       _vm._v(" "),
-                      _c("h4", [_vm._v(_vm._s(movie.type))]),
-                      _vm._v(
-                        "\n                    " +
-                          _vm._s(movie.average_rating) +
-                          "\n                   \n        "
-                      )
+                      _c("h4", [_vm._v(_vm._s(movie.type))])
                     ]),
                     _vm._v(" "),
                     _c(
