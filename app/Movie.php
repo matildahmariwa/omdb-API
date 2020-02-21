@@ -11,8 +11,8 @@ class Movie extends Model
         'title','cover_photo','year','type'
     ];
 
-    public function ratings()
+    public function rating()
     {
-        return $this->hasMany(Rating::class);
+        return $this->hasOne(Rating::class);
     }
 }

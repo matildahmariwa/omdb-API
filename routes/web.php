@@ -24,3 +24,4 @@ Route::get('/landing', function () {
     return view('landing');
 });
 Route::get('/movie/{id}', 'MoviesController@show');
+Route::post('/rate', 'RatingController@store');

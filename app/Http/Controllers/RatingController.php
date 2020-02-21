@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
-
-use App\Movie;
-
-use GuzzleHttp\Client;
 use Illuminate\Http\Request;
+use App\Rating;
+use Auth;
 
-class MoviesController extends Controller
+class RatingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,17 +15,7 @@ class MoviesController extends Controller
      */
     public function index()
     {
-        $client = new Client();
-        $uri = 'http://www.omdbapi.com/?&s=rain&apiKey=51dea3aa&page=1';
-        $header = ['headers' => ['X-Auth-Token' => 'My-Token']];
-        $res = $client->get($uri, $header);
-        $data = json_decode($res->getBody()->getContents(), true);
-  return $data;
-    }
-//getmovies
-    public function fetchMovies(){
-        $movies = Movie::with('rating')->orderBy('created_at', 'desc')->get();
-        return response()->json($movies);
+        //
     }
 
     /**
@@ -37,7 +25,7 @@ class MoviesController extends Controller
      */
     public function create()
     {
-
+        //
     }
 
     /**
@@ -48,23 +36,13 @@ class MoviesController extends Controller
      */
     public function store(Request $request)
     {
-        $movies = $this->index();
-//        dd($this->index());
-
-        $movies = collect($movies['Search']);
-//        dd($movies);
-
-             foreach($movies as $movie) {
-//                dd($movie);
-                Movie::create([
-                    'title' => $movie['Title'],
-                     'year' =>$movie['Year'],
-                    'type' =>$movie['Type'],
-                    'cover_photo' => $movie['Poster'],
-                ]);
-
-            }
-
+        
+        $rating=new Rating();
+        $rating->star_value=$request->star_value;
+        $rating->user_id = Auth::user()->id;
+        $rating->movie_id=$request->movie_id;
+        $rating->save();
+        return response()->json();
     }
 
     /**
@@ -75,13 +53,7 @@ class MoviesController extends Controller
      */
     public function show($id)
     {
-    $movie=Movie::find($id);
-    // if($movie){
-    // return response()->json(['status'=>true,'movie'=>$movie]);
-    // }else{
-    // return response()->json(['status'=>false]);
-    // }
-    return view('details', ['movie' => $movie]);
+        //
     }
 
     /**

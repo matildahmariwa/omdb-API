@@ -11,11 +11,11 @@
                <router-view></router-view> -->
                     <h4>{{ movie.year }}</h4>
                     <h4>{{ movie.type }}</h4>
-
+                   
         </div>
          <div class="block">
- 
-  <el-rate  :max="10" ></el-rate>
+
+   <el-rate :value='movie.rating? movie.rating.star_value:0' :max="10" disabled></el-rate>
 </div>          
             </div>
         </el-card>
@@ -58,11 +58,12 @@
 
 </script>
 
-<style scoped>
+<style>
  
 .image {
-    width: 100%;
-    display: block;
+    width:100%;
+    max-height:400px;
+   
   }
   
 </style>

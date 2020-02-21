@@ -17,11 +17,11 @@ class CreateRatingsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('movie_id');
-            $table->integer('value');
+            $table->integer('star_value');
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('movie_id')->references('id')->on('movies')->onDelete('cascade');
+            // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            // $table->foreign('movie_id')->references('id')->on('movies')->onDelete('cascade');
         });
     }
 
