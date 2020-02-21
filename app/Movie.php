@@ -13,6 +13,6 @@ class Movie extends Model
 
     public function rating()
     {
-        return $this->hasOne(Rating::class);
+        return $this->hasMany(Rating::class);
     }
 }
