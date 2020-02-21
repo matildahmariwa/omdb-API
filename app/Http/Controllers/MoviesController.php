@@ -22,7 +22,7 @@ class MoviesController extends Controller
         $header = ['headers' => ['X-Auth-Token' => 'My-Token']];
         $res = $client->get($uri, $header);
         $data = json_decode($res->getBody()->getContents(), true);
-  return $data;
+        return $data;
     }
 //getmovies
     public function fetchMovies(){

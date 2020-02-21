@@ -36,13 +36,25 @@ class RatingController extends Controller
      */
     public function store(Request $request)
     {
-        
-        $rating=new Rating();
-        $rating->star_value=$request->star_value;
-        $rating->user_id = Auth::user()->id;
-        $rating->movie_id=$request->movie_id;
-        $rating->save();
+        $star_value=$request->star_value;
+        $user_id = Auth::user()->id;
+        $movie_id=$request->movie_id;
+
+        $rating = Rating::createorUpdate([
+            'star_value'=>$star_value],
+
+            ['user_id' => $user_id, 'movie_id' => $movie_id]
+        ); 
+         
         return response()->json();
+        
+        // $rating=new Rating();
+        // $rating->star_value=$request->star_value;
+        // $rating->user_id = Auth::user()->id;
+        // $rating->movie_id=$request->movie_id;
+        // $rating->save();
+        // return response()->json();
+
     }
 
     /**
