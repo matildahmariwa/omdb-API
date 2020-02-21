@@ -40,10 +40,13 @@ class RatingController extends Controller
         $user_id = Auth::user()->id;
         $movie_id=$request->movie_id;
 
-        $rating = Rating::createorUpdate([
-            'star_value'=>$star_value],
+        $rating = Rating::updateOrCreate([
+            
+            'user_id' => $user_id, 'movie_id' => $movie_id],
 
-            ['user_id' => $user_id, 'movie_id' => $movie_id]
+            ['star_value'=>$star_value]
+
+          
         ); 
          
         return response()->json();
