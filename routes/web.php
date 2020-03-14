@@ -11,16 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/savee', 'MoviesController@store')->name('savee');
 Route::get('/movies', 'MoviesController@fetchMovies');
-Route::get('/landing', function () {
+Route::get('/', function () {
     return view('landing');
 });
 Route::get('/movie/{id}', 'MoviesController@show');

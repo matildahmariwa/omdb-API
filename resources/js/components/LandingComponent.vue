@@ -5,16 +5,12 @@
   <el-col :span="6" v-for="(movie, i) in movies" v-bind:key="i">
  <el-card shadow="always" :body-style="{ padding: '0px'} ">
       <img v-bind:src="movie.cover_photo" class="image" >
-    <div style="padding: 14px;">
+    <div style="padding:14px;">
                  <div class="bottom clearfix">
-          <a :href="`/movie/${movie.id}`">{{movie.title}}</a>       
-          <!-- <router-link :to="{name:'movie',params:{id:movie.id}}">{{movie.title}}</router-link> 
-               <router-view></router-view> -->
-                    <h4>{{ movie.year }}</h4>
+          <a :href="`/movie/${movie.id}`" class="detail">{{movie.title}} </a>       
+         
                     <h4>{{ movie.type }}</h4>
-                   
-                   
-        </div>
+                   </div>
          <div class="block">
 
    <el-rate :value='movie.rating? movie.average_rating:0' :max="10" disabled></el-rate>
@@ -70,12 +66,30 @@ computed: {
 
 </script>
 
-<style>
+<style lang="scss">
  
 .image {
     width:100%;
     max-height:400px;
-   
+    
   }
+  .el-card{
+    margin-top:30px;
+    border-top-left-radius:15px;
+    border-top-right-radius:18px;  
+    h4{
+      font-size: 15px;
+    }
+  }
+  .el-row{
+    margin-left: 10px !important;
+    margin-right: 10px !important;
+  }
+  .detail{
+    color:purple;
+    font-weight: bold;
+    font-size:15px;
+  }
+ 
   
 </style>
